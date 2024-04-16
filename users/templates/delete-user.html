@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <div class="container">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="delete-container">
+        <p>Are you sure you want to delete your account?</p>
+        <div class="delete-templete">
+          <a href="{{ request.GET.next }}" id="btns" class="btn btn-primary pr-5 pl-5 mr-3 mt-2">Cancel</a>
+          <input type="submit" id="btns" class="btn btn-primary pr-5 pl-5 ml-3 mt-2" value="OK" />
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

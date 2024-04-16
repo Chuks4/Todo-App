@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <div class="account-container">
+    <div class="account-profile">
+        <div class="edit-profile"><a href="{% url 'update-profile' %}" class="edit-profile">Edit profile</a></div>
+      <h2>{{profile.name}}</h2>
+      <p>Email: {{profile.email}}</p>
+      <p>Username: {{profile.username}}</p>
+    </div>
+
+
+    <div class="profile-tasks">
+      <h3>Completed tasks</h3>
+      <div class="profile-task">
+        {% for task in tasks %}
+        <p>{{task.title|slice:15}}</p>
+        {% endfor %}
+      </div>
+
+ 
+    </div>
+<a href="{% url 'delete-user' %}?next={{request.path}}" id="btns" class="btn btn-primary pr-5 pl-5 mt-4">Delete Account</a>
+  </div>
+{% endblock %}

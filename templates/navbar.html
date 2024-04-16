@@ -1,0 +1,20 @@
+<nav>
+  <header class="header">
+    <h1>taskify</h1>
+  </header>
+
+  <nav class="navbar">
+    <a href="{% url 'welcome' %}" class="logo">taskify</a>
+    <div class="hamburger-menu">&#9776;</div>
+    <div class="menu">
+      {% if request.user.is_authenticated %}
+        <a href="{% url 'logout-user' %}">Logout</a>
+        <a href="{% url 'user-account' %}">Account</a>
+        <a href="{% url 'tasks' %}">Tasks</a>
+      {% else %}
+        <a href="{% url 'welcome' %}">Home</a>
+        <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </div>
+  </nav>
+</nav>

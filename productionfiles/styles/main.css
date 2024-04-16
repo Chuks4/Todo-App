@@ -1,0 +1,309 @@
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.header {
+  background-color: #ff6b6b;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.navbar {
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar .logo {
+  font-size: 1.5em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar .hamburger-menu {
+  display: none;
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.navbar .menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  background-color: #ff8c8c;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .menu a:hover {
+  background-color: #ff5f5f;
+}
+
+.hero {
+  background: linear-gradient(45deg, #ff6b6b, #ffa8a8);
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 300px;
+  }
+
+  .hero h1 {
+    font-size: 2.5em;
+  }
+
+  .navbar .menu {
+    display: none;
+  }
+
+  .navbar .hamburger-menu {
+    display: block;
+  }
+
+  .navbar .menu.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    padding: 10px 0;
+  }
+
+  .navbar .menu.active a {
+    margin: 5px 0;
+  }
+
+}
+
+.add-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #ff6b6b;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 2em;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #ff8c8c;
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.back-arrow {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.back-arrow:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.container {
+  max-width: 50% !important;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-item {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-item.completed span {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.todo-item .actions a {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-left: 11px;
+  color: #333;
+}
+
+.todo-item .actions a:hover {
+  color: #ff4500;
+}
+
+#btns {
+  background-color: #ff6b6b !important;
+  color: #fff;
+  border-color: #fff;
+}
+
+#btns:hover {
+  background-color: #ff4500 !important;
+}
+
+/* .lgbtns {
+  width: 100%;
+  margin: 0 auto !important;
+  padding: 2em auto !important;
+} */
+
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .account-container {
+    padding: 0 10px;
+  }
+
+  .delete-container {
+    margin: 3em auto !important;
+    text-align: center;
+  }
+  #btns {
+    background-color: #ff6b6b !important;
+    color: #fff;
+    border-color: #fff;
+    padding: 0.2em 0.9em !important;
+    margin: 0 auto;
+  }
+
+  .alert-messages {
+    max-width: 50%;
+    margin: 3em auto;
+  }
+
+  /* #btns {
+    padding: 0.5em 0.9em!important;
+    margin: 0 auto;
+    } */
+
+}
+
+
+
+@media (max-width:360px) {
+  .container {
+    max-width: 100%;
+  }
+
+.delete-container {
+  text-align: center;
+}
+
+.alert-messages {
+  max-width: 60%;
+  margin: 3em auto;
+}
+
+}
+
+/**************** User Account Section ****************/
+
+.account-container {
+  max-width: 70%;
+  margin: 3em auto;
+  padding: 0 20px;
+  font-family: inherit;
+}
+
+.account-container .account-profile {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.edit-profile {
+  margin:1em 0;
+  color: #333;
+}
+
+.edit-profile a {
+  padding: 0.5em;
+  background-color: #f2f2f2;
+  border-radius: 0.3em;
+}
+
+.account-container .account-profile .edit-profile a:hover {
+  background-color: #ff6b6b;
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+.account-profile h2 {
+  margin: 0;
+}
+.account-profile p {
+  margin: 5px 0;
+}
+
+.profile-tasks {
+  background-color: #f2f2f2;
+  padding: 23px;
+  border-radius: 10px;
+  margin-top: 2em;
+}
+
+.profile-task {
+  margin-bottom: 10px;
+}

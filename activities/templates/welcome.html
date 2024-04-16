@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <section class="hero">
+    <div>
+      <h1>Welcome to taskify</h1>
+      <p>We help you plan your day.</p>
+    </div>
+  </section>
+
+<a href="{% url 'create-task' %}?next={{request.path}}" class="add-button">&#43;</a>
+{% endblock %}

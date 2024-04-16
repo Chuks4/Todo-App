@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="header">
+        <h1>User Profile</h1>
+      </div>
+
+    <form action="{% url 'update-profile' %}" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group ml-5 mr-5">
+            <label for="exampleFormControlInput1">{{ field.label }}</label>
+            {{field}}
+        
+        </div>
+        {% endfor %}
+        <input type="submit" id="btns" class="btn btn-primary pr-5 pl-5 ml-5 mb-2 " value="Submit" />
+        
+        </form>
+</div>
+{% endblock content %}

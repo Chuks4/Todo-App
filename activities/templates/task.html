@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+      <h1>My Task</h1>
+    </div>
+
+
+
+    <ul class="todo-list">
+      
+      <form action="{% url 'task-completed' %}" method="POST">
+        {% csrf_token %}
+        <a href="{% url 'welcome' %}" class="back-arrow"><i class="fas fa-chevron-left"></i></a>
+        <p><small> Only the first 15 characters will be displayed</small></p>
+        {% for task in tasks %}
+        <li class="todo-item">
+          
+          <label>
+            <input type="checkbox" name="{{ task.id }}"{% if task.completed %}checked{% endif %}/>
+            <label for="{{ task.id }}">{{ task.title|slice:15}}</label>
+          </label>
+
+          <div class="actions">
+            <a href="{% url 'update-task' task.id %}"><i class="fas fa-edit"></i></a>
+            <a href="{% url 'delete-task' task.id %}?next={{request.path}}"><i class="fas fa-trash-alt"></i></a>  
+          </div>
+        </li>
+        {% endfor %}
+        <input type="submit" id="btns" class="btn pr-5 pl-5 mt-3" value="Submit" />
+      </form>
+       
+        <!-- More todo items will be dynamically added here -->
+      </ul>
+</div>
+{% endblock content %}

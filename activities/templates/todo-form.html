@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="header">
+      <h1>Create Task</h1>
+      
+    </div>
+
+    <form method="POST">
+      {% csrf_token %}
+      <a href="{{ request.GET.next }}" class="back-arrow"><i class="fas fa-chevron-left"></i></a>
+      {% for field in form %}
+        <div class="form-group ml-3 mr-3">
+          <label for="exampleFormControlInput1">{{ field.label }}</label>
+          {{ field }}
+        </div>
+      {% endfor %}
+      <input type="submit" id="btns" class=" btn btn-primary pr-5 pl-5 mb-4 ml-3" value="Submit" />
+    </form>
+  </div>
+{% endblock %}
