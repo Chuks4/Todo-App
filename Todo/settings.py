@@ -27,7 +27,7 @@ DATABASES = {
 
 
 if DEBUG:
-    ALLOWED_HOSTS = [].split(" ")
+    ALLOWED_HOSTS = []
     print("on local")
 
 else:
