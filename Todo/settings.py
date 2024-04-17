@@ -33,7 +33,7 @@ if DEBUG:
     print("on local")
 
 else:
-    ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
+    ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
     print("on production")
     DATABASES["default"] = dj_database_url.parse(os.environ.get("DATABASE_URL"))
     STATIC_ROOT = BASE_DIR / "productionfiles"
