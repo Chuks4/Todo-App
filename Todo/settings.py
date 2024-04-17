@@ -4,7 +4,9 @@ import dj_database_url
 
 
 # Accessing our .env file
+from dotenv import load_dotenv
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,7 +35,7 @@ if DEBUG:
     print("on local")
 
 else:
-    ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+    ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
     print("on production")
     DATABASES["default"] = dj_database_url.parse(os.environ.get("DATABASE_URL"))
     STATIC_ROOT = BASE_DIR / "productionfiles"
