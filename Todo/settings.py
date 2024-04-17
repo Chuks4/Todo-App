@@ -26,8 +26,10 @@ DATABASES = {
 }
 
 
+ALLOWED_HOSTS = []
+
 if DEBUG:
-    ALLOWED_HOSTS = []
+ 
     print("on local")
 
 else:
