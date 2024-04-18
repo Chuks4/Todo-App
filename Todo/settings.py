@@ -18,25 +18,31 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False').lower() == "true"
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 
 
 if not DEBUG:
-    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOST', '').split(",")
+    ALLOWED_HOSTS = os.environ.get("ALLOWED_HOST", "").split(",")
+    # DATABASES = {
+    #     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    # }
     DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
     print("Production")
 # {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 else:
-  print('local')
+    print("local")
 # Application definition
 
 INSTALLED_APPS = [
