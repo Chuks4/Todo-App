@@ -19,28 +19,19 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+      'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('NAME'),
+        'USER': os.environ.get('USER'),
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'HOST': os.environ.get('HOST'),  # Ensure the hostname is correct
+        'PORT': 5432,
     }
 }
 
-
-ALLOWED_HOSTS = []
-
-if not DEBUG:
-    ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
-    print("on production")
-    DATABASES["default"] = dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    STATIC_ROOT = BASE_DIR / "productionfiles"
- 
-    
-
-else:
-   print("on local")
-
+# {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 # Application definition
 
@@ -131,8 +122,8 @@ STATICFILES_DIRS = [BASE_DIR / "static/"]
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
-EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL')
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL")
 EMAIL_PORT = 465
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
