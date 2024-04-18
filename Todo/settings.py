@@ -18,7 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = os.environ.get('DEBUG', 'False').lower() == "true"
+
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "todo-app-5upk.onrender.com"]
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -26,18 +28,11 @@ DATABASES = {
     }
 }
 
+STATIC_ROOT = BASE_DIR / "productionfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-if not DEBUG:
-    ALLOWED_HOSTS = os.environ.get("ALLOWED_HOST", "").split(",")
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
-
-    print("Production")
 # {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
-else:
-    print("local")
 # Application definition
 
 INSTALLED_APPS = [
@@ -121,8 +116,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / "productionfiles"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 STATICFILES_DIRS = [BASE_DIR / "static/"]
 
