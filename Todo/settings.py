@@ -21,14 +21,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 DATABASES = {
-      'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('NAME'),
-        'USER': os.environ.get('USER'),
-        'PASSWORD': os.environ.get('PASSWORD'),
-        'HOST': os.environ.get('HOST'),  # Ensure the hostname is correct
-        'PORT': 5432,
-    }
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 # {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
