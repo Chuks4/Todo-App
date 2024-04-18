@@ -24,6 +24,8 @@ DATABASES = {
     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
+STATIC_ROOT = BASE_DIR / 'productionfiles'
+
 # {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 # Application definition
