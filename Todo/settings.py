@@ -25,6 +25,7 @@ DATABASES = {
 }
 
 STATIC_ROOT = BASE_DIR / 'productionfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
