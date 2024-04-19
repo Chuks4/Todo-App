@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOST", "").split(",")
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOST', '').split(',')
 
 # Application definition
 INSTALLED_APPS = [
@@ -69,20 +69,18 @@ WSGI_APPLICATION = "Todo.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
 if not DEBUG:
-    DATABASES["default"] = dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    print("production")
+    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+    print('production')
 
 else:
-
-    print("local")
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+    print('local')
 
 
 # Password validation
