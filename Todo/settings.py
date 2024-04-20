@@ -72,6 +72,7 @@ if not DEBUG:
     print("production")
 
 else:
+    ALLOWED_HOSTS = []
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",

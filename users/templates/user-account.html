@@ -3,6 +3,7 @@
 {% block content %}
   <div class="account-container">
     <div class="account-profile">
+      <a href="{% url 'tasks' %}" class="back-arrow"><i class="fas fa-chevron-left"></i></a>
         <div class="edit-profile"><a href="{% url 'update-profile' %}" class="edit-profile">Edit profile</a></div>
       <h2>{{profile.name}}</h2>
       <p>Email: {{profile.email}}</p>

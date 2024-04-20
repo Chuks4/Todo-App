@@ -144,7 +144,7 @@ body {
 }
 
 .container {
-  max-width: 50% !important;
+  width: 50%  !important;
   margin: 50px auto;
   padding: 20px;
   background-color: #fff;
@@ -201,16 +201,15 @@ body {
   background-color: #ff4500 !important;
 }
 
-/* .lgbtns {
-  width: 100%;
-  margin: 0 auto !important;
-  padding: 2em auto !important;
-} */
-
 
 @media (max-width: 600px) {
   .container {
-    max-width: 100%;
+    max-width: 100% ;
+    width: 100% !important;
+    /* border: 0 !important; */
+    border-radius: 0px;
+    box-shadow: none ;
+
   }
 
   .account-container {
@@ -222,42 +221,23 @@ body {
     text-align: center;
   }
   #btns {
-    background-color: #ff6b6b !important;
-    color: #fff;
-    border-color: #fff;
-    padding: 0.2em 0.9em !important;
+    padding: 0.3em 0.9em !important;
     margin: 0 auto;
   }
 
   .alert-messages {
-    max-width: 50%;
-    margin: 3em auto;
+    width: 100%;
+    border-radius: 0 !important;
   }
 
-  /* #btns {
-    padding: 0.5em 0.9em!important;
-    margin: 0 auto;
-    } */
-
-}
-
-
-
-@media (max-width:360px) {
-  .container {
-    max-width: 100%;
+  h1 {
+    font-size: 1.0em;
+    text-align: center;
+    font-family: inherit;
   }
-
-.delete-container {
-  text-align: center;
 }
 
-.alert-messages {
-  max-width: 60%;
-  margin: 3em auto;
-}
 
-}
 
 /**************** User Account Section ****************/
 
