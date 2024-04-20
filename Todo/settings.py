@@ -79,7 +79,7 @@ if not DEBUG:
     print("production")
 
 else:
-    ALLOWED_HOSTS = []
+
     print("local")
 
 
