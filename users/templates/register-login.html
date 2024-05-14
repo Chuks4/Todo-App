@@ -55,6 +55,10 @@
 
           <p class="ml-3">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
           <p class="ml-3"><a href="{% url 'password_reset' %}">Forgot password</a></p>
+          <p style="text-align: center;">OR</p>
+          <div class="alternatives">
+          <a href="{% url 'social:begin' 'google-oauth2' %}" class=" mb-3 google-signin"><i class="fab fa-google pr-3"></i> Continue with Google</a>
+        </div>
       </form>
     </div>
   {% endif %}

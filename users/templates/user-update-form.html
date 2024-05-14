@@ -7,17 +7,17 @@
     <div class="header">
         <h1>User Profile</h1>
       </div>
-
+      <a href="{% url 'user-account' %}" class="back-arrow"><i class="fas fa-chevron-left"></i></a>
     <form action="{% url 'update-profile' %}" method="POST">
         {% csrf_token %}
         {% for field in form %}
-        <div class="form-group ml-5 mr-5">
+        <div class="form-group ml-3 mr-3">
             <label for="exampleFormControlInput1">{{ field.label }}</label>
             {{field}}
         
         </div>
         {% endfor %}
-        <input type="submit" id="btns" class="btn btn-primary pr-5 pl-5 ml-5 mb-2 " value="Submit" />
+        <input type="submit" id="btns" class="btn btn-primary pr-5 pl-5 ml-3 mb-2 " value="Submit" />
         
         </form>
 </div>

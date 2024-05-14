@@ -28,12 +28,15 @@ def createUser(request):
 
 def deleteUser(request):
     profile = request.user.profile
+    notifications = profile.notifications.filter(read=False).order_by("-created")
     if request.method == 'POST':
         profile.delete()
         messages.success(request, 'Account was successfully deleted')
         return redirect('login')
-
-    return render(request, 'delete-user.html')
+    context = {
+        'notifications': notifications
+    }
+    return render(request, 'delete-user.html', context)
     
     
 
@@ -42,16 +45,22 @@ def deleteUser(request):
 
 def userAccount(request):
     profile = request.user.profile
+    notifications = profile.notification.filter(read=False).order_by("-created")
     tasks = profile.tasks.filter(completed=True)
     context = {
         'profile':profile,
         'tasks': tasks
+    }
+    
+    context = {
+        'notifications': notifications
     }
     return render(request, 'user-account.html', context)
 
 
 def updateUserProfile(request):
     profile = request.user.profile
+    notifications = profile.notification.filter(read=False).order_by("-created")
     form = UpdateUserProfileForm(instance=profile)
     if request.method == 'POST':
         form = UpdateUserProfileForm(request.POST, instance=profile)
@@ -61,7 +70,8 @@ def updateUserProfile(request):
             messages.success(request, "Profile was successfully updated.")
             return redirect('user-account')
     context = {
-        'form': form
+        'form': form,
+        'notifications': notifications
     }
     return render(request, 'user-update-form.html', context)
     

@@ -4,7 +4,7 @@ from django.forms import ModelForm
 class CreateTask(ModelForm):
     class Meta:
         model = TodoItem
-        fields = ['title', 'description',]
+        fields = ['title']
         
     def __init__(self, *args, **kwargs):
         super(CreateTask, self).__init__(*args, **kwargs)

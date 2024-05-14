@@ -9,5 +9,6 @@ urlpatterns = [
     path('update-task/<str:pk>', views.updateTask, name='update-task'),
     path('delete-task/<str:pk>', views.deleteTask, name='delete-task'),
     path('tasks/', views.tasks, name='tasks'),
-    path('task-completed/', views.complete_task, name='task-completed')
+    path('task-completed/', views.complete_task, name='task-completed'),
+
 ]

@@ -14,12 +14,34 @@ body {
   text-align: center;
 }
 
+
 .navbar {
   background-color: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 20px;;
+}
+
+.navbar .notify {
+  position: absolute;
+  top: 1rem;
+  right: 10rem;
+  color: red;
+  border-radius: 50%;
+  font-size: .5rem;
+  display: none;
+}
+
+
+.navbar .inbox-notify{
+  position: relative;
+  top: -2.8rem;
+  left: 2rem;
+  color: red;
+  font-size: .5rem;
+  display: none;
+ 
 }
 
 .navbar .logo {
@@ -104,6 +126,28 @@ body {
     margin: 5px 0;
   }
 
+
+  .navbar .notify {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: red;
+    border-radius: 50%;
+    font-size: .5rem;
+    display: none;
+  }
+
+
+.navbar .inbox-notify{
+    position: relative;
+    top: -2.8rem;
+    left: 2rem;
+    color: red;
+    font-size: .5rem;
+    display: none;
+   
+  }
+
 }
 
 .add-button {
@@ -144,7 +188,7 @@ body {
 }
 
 .container {
-  width: 50%  !important;
+  width: 70% !important;
   margin: 50px auto;
   padding: 20px;
   background-color: #fff;
@@ -166,8 +210,6 @@ body {
   background-color: #f8f9fa;
   padding: 15px;
   border-radius: 5px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -201,15 +243,37 @@ body {
   background-color: #ff4500 !important;
 }
 
+.google-signin {
+  display: inline-block;
+  margin-top: 10px;
+  background-color:#ff6b6b;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.google-signin:hover {
+  text-decoration: none;
+  background-color: #ff4500;
+  color: #fff;
+}
+
+.alternatives {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 
 @media (max-width: 600px) {
   .container {
-    max-width: 100% ;
+    max-width: 100%;
     width: 100% !important;
     /* border: 0 !important; */
     border-radius: 0px;
-    box-shadow: none ;
-
+    box-shadow: none;
   }
 
   .account-container {
@@ -231,13 +295,31 @@ body {
   }
 
   h1 {
-    font-size: 1.0em;
+    font-size: 1em;
     text-align: center;
     font-family: inherit;
   }
+
+
+  .account-container h3{
+   font-size: 1rem;
+  }
+
+  .todo-list {
+    max-width: 100% !important;
+  }
+
+
+  .navbar .notify {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: red;
+    border-radius: 50%;
+    font-size: .5rem;
+    display: none;
+  }
 }
-
-
 
 /**************** User Account Section ****************/
 
@@ -254,7 +336,7 @@ body {
 }
 
 .edit-profile {
-  margin:1em 0;
+  margin: 1em 0;
   color: #333;
 }
 

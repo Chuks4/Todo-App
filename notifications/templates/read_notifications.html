@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<a href="{% url 'notifications' %}" class="back-arrow"><i class="fas fa-chevron-left"></i></a>
+<style>
+h2 {
+  font-size: 1rem;
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+}
+    
+    p {
+      margin: 0 1.5em;
+    }
+  </style> 
+      <h2>{{notifications.title}}</h2>
+
+    <p>{{notifications.message}}.</p>
+    <a href="{% url 'tasks' %}" id="btns" class="btn btn-primary pr-5 pl-5 ml-4 mt-3">Complete task</a>
+  </div>
+{% endblock content %}

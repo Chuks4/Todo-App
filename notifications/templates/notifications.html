@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <ul class="todo-list mt-4">
+    <a href="{% url 'welcome' %}" class="back-arrow"><i class="fas fa-chevron-left"></i></a>
+
+    {% if not notifications %}
+      <p class="ml-3">No notification yet...</p>
+    {% endif %}
+
+    {% for notification in notifications %}
+      <div class="todo-item">
+        <a style="font-size: 1.5rem; color: #ff6b6b;"  href="{% url 'read-notification' notification.id %}"><i class="fas fa-bell"></i></a>
+        <a style="text-decoration: none; color: #333" href="{% url 'read-notification' notification.id %}">{{ notification }}</a>
+        <small style="font-size: .6rem;">{{ notification.created }}</small>
+      </div>
+    {% endfor %}
+  </ul>
+{% endblock %}

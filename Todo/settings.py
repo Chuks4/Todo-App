@@ -19,7 +19,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "todo-app-5upk.onrender.com"]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOST", "127.0.0.1")
 
 # Application definition
 INSTALLED_APPS = [
@@ -31,6 +31,19 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "activities.apps.ActivitiesConfig",
     "users.apps.UsersConfig",
+    'notifications.apps.NotificationsConfig',
+    
+    # Google sign app
+    'social_django',
+    
+    # celery result backend
+    'django_celery_results',
+    
+    # celery beata for scheduling tasks
+    'django_celery_beat',
+    
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -42,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = "Todo.urls"
@@ -57,6 +71,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -73,6 +89,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
 
 if not DEBUG:
     DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
@@ -124,6 +141,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_DIRS = [BASE_DIR / "static/"]
 
 
+
+# EMAIL SETTINGS
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = os.environ.get("EMAIL_HOST")
 EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL")
@@ -135,3 +154,38 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# GOOGLE SIGN IN SETTINGS
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'welcome'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRE")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['email', 'profile']
+
+# CELERY SETTINGS
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER ='json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE =  'Africa/Lagos'
+
+CELERY_RESULT_BACKEND = os.environ.get("DATABASE_URL")
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = os.environ.get("CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP")
+
+
+
+# CELERY BEAT
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+
+
